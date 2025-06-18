@@ -3,17 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+    <!-- dev icons -->
     <link
       rel="stylesheet"
       type="text/css"
       href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
     />
+    <!-- font awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -21,15 +24,21 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <!-- external style sheet -->
     <link rel="stylesheet" href="./style.css" />
     <title>Shaurya</title>
   </head>
   <body>
     <!-- nav bar -->
-    <nav>
+    <nav class="container">
       <!-- logo -->
       <div class="logo">
         <a href="#hero">Shaurya Yadav</a>
+      </div>
+
+      <!-- mobile menu toggle -->
+      <div class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
       </div>
 
       <!-- nav links -->
@@ -43,52 +52,100 @@
     </nav>
 
     <!-- hero section -->
-    <section id="hero">
-      <div class="text">
-        <h1>hi, I'm Shaurya Yadav</h1>
-        <p>
-          I'm a frontend developer. Focused on building websites using HTML and
-          CSS.
-        </p>
+    <section id="hero" class="container">
+      <div class="hero-content">
+        <div class="text">
+          <h1>hi, I'm Shaurya Yadav</h1>
+          <p>
+            I'm a frontend developer. Focused on building websites using HTML
+            and CSS.
+          </p>
+        </div>
+        <div class="image">
+          <img src="./pfp.jpeg" alt="profile picture" />
+        </div>
       </div>
-      <div class="image"><img src="./pfp.jpeg" alt="profile picture" /></div>
     </section>
 
     <!-- skills section -->
-    <section id="skills">
-      <a href="#skills">Skills:</a>
-      <div class="icons">
-        <img
-          src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
-        />
-        <img
-          src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
-        />
+    <section id="skills" class="container">
+      <div class="section-content">
+        <h2>Skills:</h2>
+        <div class="icons">
+          <div class="skill-item">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
+              alt="HTML5"
+            />
+            <span>HTML5</span>
+          </div>
+          <div class="skill-item">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
+              alt="CSS3"
+            />
+            <span>CSS3</span>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- education section -->
-    <section id="education">
-      <h1>Education</h1>
-
-      <h2>RPS International School, Rewari</h2>
-      <p>9th class</p>
+    <section id="education" class="container">
+      <div class="section-content">
+        <h1>Education</h1>
+        <div class="education-item">
+          <h2>RPS International School, Rewari</h2>
+          <p>9th class</p>
+        </div>
+      </div>
     </section>
 
     <!-- contact section -->
-    <section id="contact">
-      <h1>Contact:</h1>
-      <div class="contact-me">
-        <i class="fa-solid fa-envelope"></i>
-        <a href="mailto:shauryayadav042012@gmail.com"
-          >shauryayadav042012@gmail.com</a
-        >
+    <section id="contact" class="container">
+      <div class="section-content">
+        <h1>Contact:</h1>
+        <div class="contact-me">
+          <i class="fa-solid fa-envelope"></i>
+          <a href="mailto:shauryayadav042012@gmail.com">
+            shauryayadav042012@gmail.com
+          </a>
+        </div>
       </div>
     </section>
 
     <!-- footer -->
-    <footer>
+    <footer class="container">
       <p>&copy; 2025 Shaurya Yadav</p>
     </footer>
+
+    <script>
+      // Mobile menu toggle functionality
+      const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+      const navLink = document.querySelector(".nav-link");
+
+      mobileMenuToggle.addEventListener("click", () => {
+        navLink.classList.toggle("active");
+        const icon = mobileMenuToggle.querySelector("i");
+        if (navLink.classList.contains("active")) {
+          icon.classList.remove("fa-bars");
+          icon.classList.add("fa-times");
+        } else {
+          icon.classList.remove("fa-times");
+          icon.classList.add("fa-bars");
+        }
+      });
+
+      // Close mobile menu when clicking on a link
+      const navLinks = document.querySelectorAll(".nav-link a");
+      navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          navLink.classList.remove("active");
+          const icon = mobileMenuToggle.querySelector("i");
+          icon.classList.remove("fa-times");
+          icon.classList.add("fa-bars");
+        });
+      });
+    </script>
   </body>
 </html>
