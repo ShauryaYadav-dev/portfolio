@@ -1,3 +1,4 @@
+/* Reset and base styles */
 * {
   margin: 0;
   padding: 0;
@@ -12,124 +13,484 @@ body {
 body {
   background-color: black;
   color: white;
-  padding: 20px 128px 20px 128px;
   font-family: "Poppins", sans-serif;
+  line-height: 1.6;
 }
 
-/* nav */
+/* Container for consistent max-width and centering */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
 
+/* Navigation */
 nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 2px solid white;
+  padding: 20px 0;
+  position: relative;
 }
 
 .logo a {
   color: white;
   text-decoration: none;
-  font-size: 32px;
+  font-size: clamp(24px, 4vw, 32px);
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.logo a:hover {
+  color: #ccc;
+}
+
+/* Mobile menu toggle */
+.mobile-menu-toggle {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.mobile-menu-toggle:hover {
+  color: #ccc;
 }
 
 .nav-link ul {
   display: flex;
   align-items: center;
-  gap: 20px;
-}
-
-.nav-link ul li {
-  list-style-type: none;
+  gap: 30px;
+  list-style: none;
 }
 
 .nav-link ul li a {
   color: white;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: 400;
+  transition: color 0.3s ease;
+  position: relative;
 }
 
-/* hero section */
+.nav-link ul li a:hover {
+  color: #ccc;
+}
 
+.nav-link ul li a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+.nav-link ul li a:hover::after {
+  width: 100%;
+}
+
+/* Hero section */
 #hero {
   min-height: 80vh;
-  margin-top: 56px;
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 80px 0;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 60px;
+}
+
+.text {
+  flex: 1;
+  max-width: 600px;
 }
 
 #hero h1 {
-  font-size: 64px;
-}
-
-.text,
-.image {
-  width: 50%;
+  font-size: clamp(32px, 6vw, 64px);
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.2;
 }
 
 #hero p {
-  font-size: 32px;
-  color: gray;
+  font-size: clamp(18px, 3vw, 32px);
+  color: #ccc;
+  font-weight: 300;
+  line-height: 1.4;
 }
 
-#hero .image {
+.image {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  max-width: 500px;
 }
 
-#hero .image img {
+.image img {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
   object-fit: cover;
-  width: 60%;
   border-radius: 24px;
   border: 2px solid white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* skills section */
+.image img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+}
 
-#skills a {
-  font-size: 64px;
+/* Section spacing */
+section {
+  padding: 80px 0;
+}
+
+.section-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Skills section */
+#skills h2 {
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 600;
+  margin-bottom: 40px;
   text-decoration: none;
   color: white;
 }
 
-#skills .icons {
+.icons {
   display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 15px;
+  padding: 20px;
+  border-radius: 12px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-#skills img {
-  height: 54px;
-  width: 54px;
+.skill-item:hover {
+  transform: translateY(-10px);
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
-/* education section */
+.skill-item img {
+  height: 60px;
+  width: 60px;
+  transition: transform 0.3s ease;
+}
 
+.skill-item:hover img {
+  transform: scale(1.1);
+}
+
+.skill-item span {
+  font-size: 16px;
+  font-weight: 500;
+  color: #ccc;
+}
+
+/* Education section */
 #education {
-  margin-top: 200px;
+  background-color: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  margin: 40px 0;
 }
 
-/* contact */
-
-#contact {
-  margin-top: 200px;
+#education h1 {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 600;
+  margin-bottom: 40px;
+  text-align: center;
 }
 
-#contact .contact-me {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.education-item {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  border-radius: 12px;
+  border: 2px solid white;
+  margin: 0px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-#contact .contact-me a {
-  text-decoration: none;
+.education-item:hover {
+  transform: translateX(10px);
+  box-shadow: 0 5px 20px rgba(255, 255, 255, 0.1);
+}
+
+.education-item h2 {
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 500;
+  margin-bottom: 10px;
   color: white;
 }
 
-/* footer */
+.education-item p {
+  font-size: clamp(16px, 2vw, 20px);
+  color: #ccc;
+  font-weight: 300;
+}
 
+/* Contact section */
+#contact h1 {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.contact-me {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 25px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  flex-wrap: wrap;
+}
+
+.contact-me:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-5px);
+}
+
+.contact-me i {
+  font-size: 24px;
+  color: white;
+}
+
+.contact-me a {
+  text-decoration: none;
+  color: white;
+  font-size: clamp(16px, 2.5vw, 20px);
+  font-weight: 400;
+  transition: color 0.3s ease;
+  word-break: break-all;
+}
+
+.contact-me a:hover {
+  color: #ccc;
+}
+
+/* Footer */
 footer {
   border-top: 2px solid white;
   text-align: center;
+  padding: 30px 0;
+  margin-top: 40px;
+}
+
+footer p {
+  font-size: 16px;
+  color: #ccc;
+  font-weight: 300;
+}
+
+/* Responsive Design */
+
+/* Tablet styles */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .hero-content {
+    padding: 0px 40px;
+  }
+
+  /* Navigation */
+  .mobile-menu-toggle {
+    display: block;
+    z-index: 1001;
+  }
+
+  .nav-link {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 250px;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: right 0.3s ease;
+    z-index: 1000;
+  }
+
+  .nav-link.active {
+    right: 0;
+  }
+
+  .nav-link ul {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .nav-link ul li a {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  /* Hero section */
+  .hero-content {
+    flex-direction: column-reverse;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .text {
+    max-width: 100%;
+  }
+
+  .image {
+    max-width: 300px;
+  }
+
+  /* Skills */
+  .icons {
+    justify-content: center;
+    gap: 30px;
+  }
+
+  /* educaion */
+  .education-item {
+    margin: 0 150px;
+  }
+
+  /* Sections */
+  section {
+    padding: 60px 0;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 425px) {
+  .container {
+    padding: 0 10px;
+  }
+
+  body {
+    padding: 10px;
+  }
+
+  /* Navigation */
+  nav {
+    padding: 15px 0;
+  }
+
+  .nav-link {
+    width: 100%;
+    right: -100%;
+  }
+
+  /* Hero */
+  #hero {
+    min-height: 70vh;
+    padding: 40px 0;
+  }
+
+  .hero-content {
+    gap: 30px;
+  }
+
+  .image {
+    max-width: 250px;
+  }
+
+  /* Skills */
+  .icons {
+    gap: 20px;
+  }
+
+  .skill-item {
+    padding: 15px;
+  }
+
+  .skill-item img {
+    height: 50px;
+    width: 50px;
+  }
+
+  /* Education */
+  .education-item {
+    padding: 20px;
+    margin: 0px;
+  }
+
+  /* Contact */
+  .contact-me {
+    padding: 20px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* Sections */
+  section {
+    padding: 40px 0;
+  }
+}
+
+/* Very small mobile styles */
+@media (max-width: 320px) {
+  .container {
+    padding: 0 8px;
+  }
+
+  .logo a {
+    font-size: 20px;
+  }
+
+  .hero-content {
+    gap: 20px;
+  }
+
+  .image {
+    max-width: 200px;
+  }
+
+  .skill-item img {
+    height: 40px;
+    width: 40px;
+  }
+
+  .icons {
+    gap: 15px;
+  }
+
+  .education-item {
+    padding: 15px;
+    margin: 0px;
+  }
+
+  .contact-me {
+    padding: 15px;
+  }
+
+  .contact-me a {
+    font-size: 12px;
+  }
 }
